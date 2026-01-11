@@ -3,6 +3,9 @@ package com.example.camel.camelmicroservicea.route;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Component
 public class MyFirstTimerRoutar extends RouteBuilder {
 
@@ -15,7 +18,8 @@ public class MyFirstTimerRoutar extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         from("timer:first-timer") //Mi colaa
-                .transform().constant("My Costantn Mensaje ")
+                //.transform().constant("My Costantn Mensaje ")
+                .transform().constant("El tiempo Ahora" + LocalDateTime.now())
                 .to("log:first-timer");// Dtabase en un log
     }
 }
